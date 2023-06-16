@@ -1,13 +1,14 @@
 # My emacs config
 
-bzy's emacs config. Manage packages using `git submodule`.
+bzy's emacs config.
 
 # How to use
 
 1. Fetch source code and submodules
 
 ```bash
-git clone --recurse-submodules --shallow-submodules https://github.com/bzy-debug/.emacs.d.git
+git clone https://github.com/bzy-debug/.emacs.d.git
+./package.py
 ```
 
 2. Install package dependencies
