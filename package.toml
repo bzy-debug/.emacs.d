@@ -1,0 +1,111 @@
+[emacs]
+config_dir = "lisp/config"
+packages_dir = "lisp/packages"
+
+[paredit]
+repo = "https://github.com/emacsmirror/paredit"
+
+[ef-themes]
+repo = "https://github.com/protesilaos/ef-themes"
+
+[emacs-surround]
+repo = "https://github.com/ganmacs/emacs-surround/"
+
+[vertico]
+repo = "https://github.com/minad/vertico"
+
+[marginalia]
+repo = "https://github.com/minad/marginalia"
+
+[orderless]
+repo = "https://github.com/oantolin/orderless"
+
+[compat]
+repo = "https://github.com/emacs-compat/compat"
+
+[mini-frame]
+repo = "https://github.com/muffinmad/emacs-mini-frame"
+
+[which-key]
+repo = "https://github.com/justbur/emacs-which-key"
+
+[ctrlf]
+repo = "https://github.com/radian-software/ctrlf"
+
+[yasnippet]
+repo = "https://github.com/joaotavora/yasnippet"
+
+[yasnippet-snippets]
+repo = "https://github.com/AndreaCrotti/yasnippet-snippets"
+
+[markdown-mode]
+repo = "https://github.com/jrblevin/markdown-mode"
+
+[lsp-bridge]
+repo = "https://github.com/manateelazycat/lsp-bridge"
+
+[blink-search]
+repo = "https://github.com/manateelazycat/blink-search"
+
+[multiple-cursors]
+repo = "https://github.com/magnars/multiple-cursors.el"
+
+[exec-path-from-shell]
+repo = "https://github.com/purcell/exec-path-from-shell"
+
+[haskell-mode]
+repo = "https://github.com/haskell/haskell-mode"
+
+[zig-mode]
+repo = "https://github.com/ziglang/zig-mode"
+
+[slime]
+repo = "https://github.com/slime/slime"
+
+[tuareg]
+repo = "https://github.com/ocaml/tuareg"
+
+[cargo]
+repo = "https://github.com/kwrooijen/cargo.el"
+
+[margit]
+repo = "https://github.com/magit/magit.git"
+
+[emacsql]
+repo = "https://github.com/magit/emacsql.git"
+
+[with-editor]
+repo = "https://github.com/magit/with-editor"
+
+[dash]
+repo = "https://github.com/magnars/dash.el"
+
+[rainbow-delimiters]
+repo = "https://github.com/Fanael/rainbow-delimiters"
+
+[emacs-dashboard]
+repo = "https://github.com/emacs-dashboard/emacs-dashboard"
+
+[crux]
+repo = "https://github.com/bbatsov/crux"
+
+[avy]
+repo = "https://github.com/abo-abo/avy"
+
+[with-proxy]
+repo = "https://github.com/twlz0ne/with-proxy.el"
+
+[org]
+repo = "https://git.tecosaur.net/tec/org-mode"
+
+[org-roam]
+repo = "https://github.com/org-roam/org-roam"
+
+["cdlatex"]
+repo = "https://github.com/cdominik/cdlatex.git"
+
+[treesit-auto]
+repo = "https://github.com/renzmann/treesit-auto.git"
+
+[reformatter]
+repo = "https://github.com/purcell/emacs-reformatter"
