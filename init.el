@@ -63,6 +63,7 @@
 (require 'init-treesit)
 (require 'init-which-key)
 (require 'init-blink-search)
+(require 'init-dirvish)
 ;; Programming
 (require 'haskell-mode)
 (require 'init-lsp-bridge)
@@ -79,5 +80,5 @@
 ;; Latex
 ;; (require 'init-auctex)
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+(require 'opam-user-setup)
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line

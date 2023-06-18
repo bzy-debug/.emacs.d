@@ -109,3 +109,6 @@ repo = "https://github.com/renzmann/treesit-auto.git"
 
 [reformatter]
 repo = "https://github.com/purcell/emacs-reformatter"
+
+[dirvish]
+repo = "https://github.com/alexluigit/dirvish"
