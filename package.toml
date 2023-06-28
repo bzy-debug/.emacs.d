@@ -1,4 +1,5 @@
 [emacs]
+emacs_dir = "~/.emacs.d"
 config_dir = "lisp/config"
 packages_dir = "lisp/packages"
 
