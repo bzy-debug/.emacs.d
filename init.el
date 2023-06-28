@@ -74,11 +74,12 @@
 (require 'zig-mode)
 (require 'init-rust-ts-mode)
 ;; Org
-(require 'init-org)
-(require 'init-org-roam)
-(require 'cdlatex)
+;; (require 'init-org)
+;; (require 'init-org-roam)
+;; (require 'cdlatex)
 ;; Latex
 ;; (require 'init-auctex)
+
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup)
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
