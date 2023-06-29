@@ -25,8 +25,8 @@
 (setq acm-candidate-match-function #'orderless-regexp)
 (setq acm-enable-yas nil)
 (setq acm-enable-search-file-words nil)
-(setq acm-backend-lsp-candidate-min-length 2)
-(setq acm-backend-elisp-candidate-min-length 2)
+(setq acm-backend-lsp-candidate-min-length 0)
+(setq acm-backend-elisp-candidate-min-length 0)
 (define-key acm-mode-map [tab] #'acm-insert-common)
 
 (global-lsp-bridge-mode)
