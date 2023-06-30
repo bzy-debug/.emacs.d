@@ -21,3 +21,5 @@ lisp/packages/*
 
 !.gitignore
 !.gitmodules
+!lisp/packages/dune
+!lisp/packages/opam-user-setup.el
