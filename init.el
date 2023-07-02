@@ -79,10 +79,3 @@
 ;; (require 'cdlatex)
 ;; Latex
 ;; (require 'init-auctex)
-
-(require 'dune)
-(add-hook 'dune-mode #'paredit-mode)
-
-;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup)
-;; ## end of OPAM user-setup addition for emacs / base ## keep this line
