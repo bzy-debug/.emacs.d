@@ -45,7 +45,6 @@
 (global-auto-revert-mode 1)                               ;auto revert buffer
 (global-prettify-symbols-mode 1)
 
-(add-hook 'before-save-hook #'delete-trailing-lines)      ;delete trailing lines on save
 (add-hook 'before-save-hook #'delete-trailing-whitespace) ;delete trailing whitespace on save
 (add-hook 'prog-mode-hook #'hl-line-mode)                 ;highlight current line on programming
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)    ;dispaly line numbers on programming
