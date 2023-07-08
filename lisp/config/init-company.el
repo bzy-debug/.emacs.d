@@ -4,6 +4,4 @@
 (setq company-minimum-prefix-length 1)
 (setq company-files-exclusions '(".git/" ".DS_Store"))
 
-(add-hook 'prog-mode-hook #'company-mode)
-
 (provide 'init-company)

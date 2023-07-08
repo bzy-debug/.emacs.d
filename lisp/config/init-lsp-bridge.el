@@ -17,9 +17,6 @@
 (keymap-global-set "C-c l a" #'lsp-bridge-code-action)
 (keymap-global-set "C-c l s" #'lsp-bridge-toggle-sdcv-helper)
 
-(setq lsp-bridge-single-lang-server-extension-list
-      '((("css") . "vscode-css-language-server")
-        (("html" "gohtml") . "vscode-html-language-server")))
 (setq lsp-bridge-enable-hover-diagnostic t)
 (setq acm-enable-quick-access t)
 (setq acm-candidate-match-function #'orderless-regexp)

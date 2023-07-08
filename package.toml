@@ -113,3 +113,18 @@ repo = "https://github.com/purcell/emacs-reformatter"
 
 [dirvish]
 repo = "https://github.com/alexluigit/dirvish"
+
+[PG]
+repo = "https://github.com/ProofGeneral/PG.git"
+
+[company]
+repo = "https://github.com/company-mode/company-mode.git"
+
+[company-coq]
+repo = "https://github.com/cpitclaudel/company-coq.git"
+
+[company-math]
+repo = "https://github.com/vspinu/company-math.git"
+
+[math-symbol-lists]
+repo = "https://github.com/vspinu/math-symbol-lists.git"

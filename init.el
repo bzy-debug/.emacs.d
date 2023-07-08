@@ -64,6 +64,8 @@
 (require 'init-which-key)
 (require 'init-blink-search)
 (require 'init-dirvish)
+(require 'init-company)
+(require 'init-company-coq)
 ;; Programming
 (require 'haskell-mode)
 (require 'init-lsp-bridge)
@@ -73,6 +75,7 @@
 (require 'markdown-mode)
 (require 'zig-mode)
 (require 'init-rust-ts-mode)
+(require 'init-PG)
 ;; Org
 ;; (require 'init-org)
 ;; (require 'init-org-roam)
