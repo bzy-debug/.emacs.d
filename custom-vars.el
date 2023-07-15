@@ -5,7 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(byte-compile-warnings nil)
  '(connection-local-criteria-alist
-   '(((:application eshell)
+   '(((:application tramp :protocol "flatpak")
+      tramp-container-connection-local-default-flatpak-profile)
+     ((:application eshell)
       eshell-connection-default-profile)
      ((:application tramp :machine "bzy-Macbook.local")
       tramp-connection-local-darwin-ps-profile)
@@ -16,7 +18,9 @@
      ((:application tramp)
       tramp-connection-local-default-system-profile tramp-connection-local-default-shell-profile)))
  '(connection-local-profile-alist
-   '((eshell-connection-default-profile
+   '((tramp-container-connection-local-default-flatpak-profile
+      (tramp-remote-path "/app/bin" tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin"))
+     (eshell-connection-default-profile
       (eshell-path-env-list))
      (tramp-connection-local-darwin-ps-profile
       (tramp-process-attributes-ps-args "-acxww" "-o" "pid,uid,user,gid,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" "-o" "state=abcde" "-o" "ppid,pgid,sess,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etime,pcpu,pmem,args")
@@ -92,6 +96,7 @@
       (null-device . "/dev/null"))))
  '(flycheck-keymap-prefix "\0031")
  '(lsp-ui-doc-border "Black")
+ '(safe-local-variable-values '((eval turn-off-auto-fill)))
  '(show-paren-delay 0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

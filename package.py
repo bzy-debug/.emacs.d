@@ -18,6 +18,7 @@ def install():
       continue
     sp.run(['git', 'clone', '--depth', '1', repo, clone_path])
 
+
 def update(repo):
   print(f'Update {repo}')
   clone_path = os.path.join(emacs_dir, packages_dir, repo)
