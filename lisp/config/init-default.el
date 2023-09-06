@@ -14,8 +14,6 @@
 (setq-default indent-tabs-mode nil)                       ;use space to indent
 (setq-default tab-width 2)                                ;set tab width to 2
 (setq-default cursor-type 'bar)                           ;change cursor type
-(setq python-indent-offset 2)
-(setq js-indent-level 2)
 
 (setq url-proxy-services
       '(("http" . "127.0.0.1:7890")
@@ -25,10 +23,10 @@
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))                 ;kill buffer with process directly
 
-(set-face-attribute 'default nil :family "Sarasa Term SC Nerd" :height 190)
-(set-face-attribute 'fixed-pitch nil :family "Sarasa Term SC Nerd" :height 190)
-(set-face-attribute 'variable-pitch nil :family "Charter" :height 210)
-(set-fontset-font t '(#x2ff0 . #x9ffc) (font-spec :family "STSong" :size 20 :weight 'bold)) ;set chinese font
+(set-face-attribute 'default nil :family "Sarasa Term SC Nerd" :height 170)
+(set-face-attribute 'fixed-pitch nil :family "Sarasa Term SC Nerd" :height 170)
+(set-face-attribute 'variable-pitch nil :family "Charter" :height 170)
+(set-fontset-font t '(#x2ff0 . #x9ffc) (font-spec :family "STSong" :size 17 :weight 'bold)) ;set chinese font
 
 (blink-cursor-mode -1)                                    ;no blinking cursor
 (mouse-wheel-mode -1)

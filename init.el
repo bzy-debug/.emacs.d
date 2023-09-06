@@ -62,26 +62,11 @@
 (require 'init-term)
 (require 'init-treesit)
 (require 'init-which-key)
-(require 'init-blink-search)
 (require 'init-dirvish)
 (require 'init-company)
 (require 'init-company-coq)
-;; Programming
-(require 'haskell-mode)
-(require 'init-lsp-bridge)
 (require 'init-slime)
-(require 'init-yasnippet)
-(require 'init-tuareg)
-(require 'markdown-mode)
-(require 'zig-mode)
-(require 'init-rust-ts-mode)
 (require 'init-PG)
-;; Org
-;; (require 'init-org)
-;; (require 'init-org-roam)
-;; (require 'cdlatex)
-;; Latex
-;; (require 'init-auctex)
 
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
