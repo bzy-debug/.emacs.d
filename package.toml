@@ -128,3 +128,9 @@ repo = "https://github.com/vspinu/company-math.git"
 
 [math-symbol-lists]
 repo = "https://github.com/vspinu/math-symbol-lists.git"
+
+[sml-mode]
+repo = "https://github.com/emacsmirror/sml-mode.git"
+
+[racket-mode]
+repo = "https://github.com/greghendershott/racket-mode.git"

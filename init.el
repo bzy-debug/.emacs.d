@@ -67,9 +67,11 @@
 (require 'init-company-coq)
 (require 'init-slime)
 (require 'init-PG)
+(require 'init-sml-mode)
+(require 'init-racket-mode)
 
 (load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+             (shell-command-to-string "agda-mode locate")))
 (setq auto-mode-alist
    (append
      '(("\\.agda\\'" . agda2-mode)
