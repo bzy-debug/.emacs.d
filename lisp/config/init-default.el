@@ -45,7 +45,7 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace) ;delete trailing whitespace on save
 (add-hook 'prog-mode-hook #'hl-line-mode)                 ;highlight current line on programming
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)    ;dispaly line numbers on programming
+;(add-hook 'prog-mode-hook #'display-line-numbers-mode) ;dispaly line numbers on programming
 
 (keymap-global-set "C-S-h" #'windmove-left)
 (keymap-global-set "C-S-j" #'windmove-down)

@@ -94,6 +94,8 @@
      (tramp-connection-local-default-system-profile
       (path-separator . ":")
       (null-device . "/dev/null"))))
+ '(custom-safe-themes
+   '("666170be0e2a66ac9812d7327aeb0a81218a8f828fbc8d50b6775afe32a8442b" "8294b451ffe0575fcccd1a447f56efc94d9560787cd5ff105e620e5f5771427d" "642d15b52e071464f6b6d559d9ebdf3187a36ea9e86d9455dfb0dbfad47ca17e" "9225db6c746ab38bdfe14af45aaf0549dc9d6bca73ffe81fd9e955f843d2e095" default))
  '(flycheck-keymap-prefix "\0031")
  '(lsp-ui-doc-border "Black")
  '(safe-local-variable-values '((eval turn-off-auto-fill)))
