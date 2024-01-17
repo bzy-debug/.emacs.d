@@ -61,6 +61,7 @@
 
   (set-face-attribute 'default nil :family "Sarasa Term SC Nerd" :height 170)
   (set-face-attribute 'fixed-pitch nil :family "Sarasa Term SC Nerd" :height 170)
+  (set-face-attribute 'variable-pitch nil :family "Sarasa Term SC Nerd" :height 170)
 
   (show-paren-mode -1)
   (setq show-paren-delay 0)
@@ -115,6 +116,15 @@
 (use-package marginalia
   :init
   (marginalia-mode 1))
+
+(use-package ctrlf
+  :config
+  (ctrlf-mode 1))
+
+(use-package yasnippet
+  :config
+  (use-package yasnippet-snippets)
+  (yas-global-mode 1))
 
 (use-package orderless
   :init
@@ -197,7 +207,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
+   '(yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
