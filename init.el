@@ -173,13 +173,31 @@
                           (projects . 5)))
   (dashboard-setup-startup-hook))
 
+(use-package proof-general
+  :init
+  (setq proof-splash-enable nil))
+
+(use-package company-coq
+  :hook
+  ((coq-mode . company-coq-mode)))
+
+(use-package term
+  :config
+  (fset 'term 'ansi-term)
+  (keymap-global-set "C-c t" #'term)
+  (define-key term-raw-map (kbd "C-c C-y") #'term-paste))
+
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
+   '(exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
