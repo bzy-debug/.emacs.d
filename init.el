@@ -105,6 +105,11 @@
   ((prog-mode . hl-line-mode)
    (before-save . delete-trailing-whitespace)))
 
+(use-package avy
+  :bind
+  (("C-." . avy-goto-word-1)
+   ("C-;" . avy-goto-char-2)))
+
 (use-package ef-themes
   :config
   (load-theme 'ef-light :no-confirm))
@@ -201,13 +206,15 @@
   :init
   (exec-path-from-shell-initialize))
 
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
+   '(avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
