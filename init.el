@@ -34,11 +34,11 @@
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t)
   (setq split-width-threshold 80)                           ;split using left right manner
-  (files--ensure-directory "~/.local")
-  (files--ensure-directory "~/.local/state")
-  (files--ensure-directory "~/.local/state/emacs")
-  (files--ensure-directory "~/.local/state/emacs/auto-save")
-  (files--ensure-directory "~/.local/state/emacs/backup")
+  (unless (file-directory-p "~/.local/state/emacs/auto-save")
+    (make-directory "~/.local/state/emacs/auto-save" :parent))
+  (unless (file-directory-p "~/.local/state/emacs/backup")
+    (make-directory "~/.local/state/emacs/backup" :parent))
+
   (setq auto-save-file-name-transforms
         '((".*" "~/.local/state/emacs/auto-save/" t)))                ;set auto save file directory
   (setq backup-directory-alist
