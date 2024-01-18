@@ -103,6 +103,8 @@
    ("C-S-l" . windmove-right))
   :hook
   ((prog-mode . hl-line-mode)
+   (prog-mode . ispell-minor-mode)
+   (text-mode . ispell-minor-mode)
    (before-save . delete-trailing-whitespace)))
 
 (use-package avy
