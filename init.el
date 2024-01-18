@@ -206,6 +206,10 @@
   :init
   (exec-path-from-shell-initialize))
 
+(use-package opam-switch-mode
+  :hook
+  ((coq-mode tuareg-mode) . opam-switch-mode))
+
 
 
 (custom-set-variables
@@ -214,7 +218,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
+   '(forge opam-switch-mode avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
