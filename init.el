@@ -213,12 +213,13 @@
   ((coq-mode tuareg-mode) . opam-switch-mode))
 
 (use-package multiple-cursors
+  :init
+  (setq mc/always-repeat-command t)
+  (setq mc/always-run-for-all t)
   :bind
   (("C->" . mc/mark-next-word-like-this)
    ("C-<" . mc/mark-previous-word-like-this)
    ("C-c C-<" . mc/mark-all-words-like-this)))
-
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -226,7 +227,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(multiple-cursors multi-cursors forge opam-switch-mode avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
+   '(multiple-cursors forge opam-switch-mode avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
