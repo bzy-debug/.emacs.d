@@ -80,6 +80,7 @@
   (global-subword-mode 1)                                   ;handle CamelCase gracefully
   (global-auto-revert-mode 1)                               ;auto revert buffer
   (global-prettify-symbols-mode 1)
+  (delete-selection-mode 1)
 
   (defun ns-system-appearance-changed (new-system-appearance)
     "change theme when system appearance changes"
@@ -103,8 +104,6 @@
    ("C-S-l" . windmove-right))
   :hook
   ((prog-mode . hl-line-mode)
-   (prog-mode . ispell-minor-mode)
-   (text-mode . ispell-minor-mode)
    (before-save . delete-trailing-whitespace)))
 
 (use-package avy
@@ -192,7 +191,9 @@
 
 (use-package proof-general
   :init
-  (setq proof-splash-enable nil))
+  (setq proof-splash-enable nil)
+  (setq proof-three-window-mode-policy 'hybrid)
+  (setq coq-diffs 'on))
 
 (use-package company-coq
   :hook
