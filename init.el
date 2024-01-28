@@ -192,8 +192,7 @@
 (use-package proof-general
   :init
   (setq proof-splash-enable nil)
-  (setq proof-three-window-mode-policy 'hybrid)
-  (setq coq-diffs 'on))
+  (setq proof-three-window-mode-policy 'hybrid))
 
 (use-package company-coq
   :hook
