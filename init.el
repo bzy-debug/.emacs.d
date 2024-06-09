@@ -10,54 +10,31 @@
 
 (use-package emacs
   :init
-  ;; Add prompt indicator to `completing-read-multiple'.
-  ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
-  (defun crm-indicator (args)
-    (cons (format "[CRM%s] %s"
-                  (replace-regexp-in-string
-                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
-                   crm-separator)
-                  (car args))
-          (cdr args)))
-  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
-
-  ;; Do not allow the cursor in the minibuffer prompt
-  (setq minibuffer-prompt-properties
-        '(read-only t cursor-intangible t face minibuffer-prompt))
-  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-
-  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
-  ;; Vertico commands are hidden in normal buffers.
-  ;; (setq read-extended-command-predicate
-  ;;       #'command-completion-default-include-p)
-
-  ;; Enable recursive minibuffers
-  (setq enable-recursive-minibuffers t)
-  (setq split-width-threshold 80)                           ;split using left right manner
+  (setq split-width-threshold 80)                      ;split using left right manner
   (unless (file-directory-p "~/.local/state/emacs/auto-save")
     (make-directory "~/.local/state/emacs/auto-save" :parent))
   (unless (file-directory-p "~/.local/state/emacs/backup")
     (make-directory "~/.local/state/emacs/backup" :parent))
 
   (setq auto-save-file-name-transforms
-        '((".*" "~/.local/state/emacs/auto-save/" t)))                ;set auto save file directory
+        '((".*" "~/.local/state/emacs/auto-save/" t))) ;set auto save file directory
   (setq backup-directory-alist
-        '(("." . "~/.local/state/emacs/backup/")))                    ;set backup directory
+        '(("." . "~/.local/state/emacs/backup/")))     ;set backup directory
   (setq backup-by-copying t)
-  (setq tab-always-indent 'complete)                        ;tab to complete
-  (setq ring-bell-function 'ignore)                         ;no ring bell
-  (setq use-short-answers t)                                ;y-n instead of yes-no
+  (setq tab-always-indent 'complete)                   ;tab to complete
+  (setq ring-bell-function 'ignore)                    ;no ring bell
+  (setq use-short-answers t)                           ;y-n instead of yes-no
   (setq initial-scratch-message nil)
-  (setq confirm-kill-processes nil)                         ;stop asking "Active processes..."
-  (setq-default indent-tabs-mode nil)                       ;use space to indent
-  (setq-default tab-width 2)                                ;set tab width to 2
-  (setq-default cursor-type 'bar)                           ;change cursor type
+  (setq confirm-kill-processes nil)                    ;stop asking "Active processes..."
+  (setq-default indent-tabs-mode nil)                  ;use space to indent
+  (setq-default tab-width 2)                           ;set tab width to 2
+  (setq-default cursor-type 'bar)                      ;change cursor type
   (setq url-proxy-services
-        '(("http" . "127.0.0.1:7890")
-          ("https" . "127.0.0.1:7890")))                    ;setup proxy
+        '(("http"  . "127.0.0.1:7890")
+          ("https" . "127.0.0.1:7890")))               ;setup proxy
   (setq kill-buffer-query-functions
         (remq 'process-kill-buffer-query-function
-              kill-buffer-query-functions))                 ;kill buffer with process directly
+              kill-buffer-query-functions))            ;kill buffer with process directly
 
   (set-face-attribute 'default nil :family "Sarasa Term SC Nerd" :height 170)
   (set-face-attribute 'fixed-pitch nil :family "Sarasa Term SC Nerd" :height 170)
@@ -67,20 +44,21 @@
   (setq show-paren-delay 0)
   (show-paren-mode 1)
 
-  (blink-cursor-mode -1)                                    ;no blinking cursor
+  (blink-cursor-mode -1)                               ;no blinking cursor
   (mouse-wheel-mode -1)
-  (pixel-scroll-precision-mode 1)                           ;smooth scroll
-  (repeat-mode 1)                                           ;repeat command
-  (recentf-mode 1)                                          ;record recent files
-  (savehist-mode 1)                                         ;record command hist
-  (save-place-mode 1)                                       ;record last edit palce
+  (pixel-scroll-precision-mode 1)                      ;smooth scroll
+  (repeat-mode 1)                                      ;repeat command
+  (recentf-mode 1)                                     ;record recent files
+  (savehist-mode 1)                                    ;record command hist
+  (save-place-mode 1)                                  ;record last edit palce
   (display-battery-mode 1)
-  (electric-pair-mode 1)                                    ;auto pair
-  (global-visual-line-mode 1)                               ;handle line break gracefully
-  (global-subword-mode 1)                                   ;handle CamelCase gracefully
-  (global-auto-revert-mode 1)                               ;auto revert buffer
+  (electric-pair-mode 1)                               ;auto pair
+  (global-visual-line-mode 1)                          ;handle line break gracefully
+  (global-subword-mode 1)                              ;handle CamelCase gracefully
+  (global-auto-revert-mode 1)                          ;auto revert buffer
   (global-prettify-symbols-mode 1)
   (delete-selection-mode 1)
+  (fido-vertical-mode 1)
 
   (defun ns-system-appearance-changed (new-system-appearance)
     "change theme when system appearance changes"
@@ -89,10 +67,10 @@
       ('dark (load-theme 'ef-dark :no-confirm))))
 
   (when (eq system-type 'darwin)
-    (setq ns-use-native-fullscreen t   ;mac native fullscreen
-          mac-command-modifier 'meta   ;command as meta
-          mac-option-modifier 'super   ;option as super
-          frame-resize-pixelwise t)    ;real fullsize for window manager
+    (setq ns-use-native-fullscreen t                   ;mac native fullscreen
+          mac-command-modifier 'meta                   ;command as meta
+          mac-option-modifier 'super                   ;option as super
+          frame-resize-pixelwise t)                    ;real fullsize for window manager
     (add-hook 'ns-system-appearance-change-functions
               #'ns-system-appearance-changed)
     (add-to-list 'default-frame-alist
@@ -106,53 +84,13 @@
   ((prog-mode . hl-line-mode)
    (before-save . delete-trailing-whitespace)))
 
-(use-package avy
-  :bind
-  (("C-." . avy-goto-word-1)
-   ("C-;" . avy-goto-char-2)))
-
 (use-package ef-themes
   :config
   (load-theme 'ef-light :no-confirm))
 
-(use-package vertico
-  :init
-  (vertico-mode 1))
-
-(use-package marginalia
-  :init
-  (marginalia-mode 1))
-
 (use-package ctrlf
   :config
   (ctrlf-mode 1))
-
-(use-package yasnippet
-  :config
-  (use-package yasnippet-snippets)
-  (yas-global-mode 1))
-
-(use-package orderless
-  :init
-  (setq completion-styles '(basic partial-completion orderless))
-  (setq completion-category-overrides nil)
-  (setq completion-category-defaults nil))
-
-(use-package mini-frame
-  :config
-  (setq mini-frame-show-parameters
-      '((top   . 0.2)
-        (width . 0.8)
-        (left  . 0.5)))
-  (when (eq system-type 'darwin)
-    (setq mini-frame-background-color-function
-          (lambda ()
-            (pcase ns-system-appearance
-              ('dark "Black")
-              ('light "White")))))
-  (setq mini-frame-ignore-commands nil)
-
-  (mini-frame-mode))
 
 (use-package rainbow-delimiters
   :hook
@@ -162,22 +100,14 @@
 
 (use-package paredit
   :hook
-  ((scheme-mode . paredit-mode)
-   (lisp-mode . paredit-mode)
+  ((scheme-mode     . paredit-mode)
+   (lisp-mode       . paredit-mode)
    (emacs-lisp-mode . paredit-mode)))
 
 (use-package which-key
   :init
   (setq which-key-idle-delay 0.3)
   (which-key-mode 1))
-
-(use-package company
-  :init
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 1)
-  (setq company-files-exclusions '(".git/" ".DS_Store"))
-  :hook
-  ((prog-mode . company-mode)))
 
 (use-package dashboard
   :init
@@ -189,48 +119,6 @@
                           (projects . 5)))
   (dashboard-setup-startup-hook))
 
-(use-package proof-general
-  :init
-  (setq proof-splash-enable nil)
-  (setq proof-three-window-mode-policy 'hybrid))
-
-(use-package company-coq
-  :hook
-  ((coq-mode . company-coq-mode)))
-
-(use-package term
-  :config
-  (fset 'term 'ansi-term)
-  (keymap-global-set "C-c t" #'term)
-  (define-key term-raw-map (kbd "C-c C-y") #'term-paste))
-
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
-
-(use-package opam-switch-mode
-  :hook
-  ((coq-mode tuareg-mode) . opam-switch-mode))
-
-(use-package multiple-cursors
-  :init
-  (setq mc/always-repeat-command t)
-  (setq mc/always-run-for-all t)
-  :bind
-  (("C->" . mc/mark-next-word-like-this)
-   ("C-<" . mc/mark-previous-word-like-this)
-   ("C-c C-<" . mc/mark-all-words-like-this)))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(multiple-cursors forge opam-switch-mode avy yasnippet-snippets ctrlf exec-path-from-shell proof-general proof-site company-coq emacs-surround dashboard company which-key paredit magit rainbow-delimiters orderless mini-frame marginalia vertico ef-themes)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
