@@ -10,31 +10,36 @@
 
 (use-package emacs
   :init
-  (setq split-width-threshold 80)                      ;split using left right manner
+  (setq split-width-threshold 80)
   (unless (file-directory-p "~/.local/state/emacs/auto-save")
     (make-directory "~/.local/state/emacs/auto-save" :parent))
   (unless (file-directory-p "~/.local/state/emacs/backup")
     (make-directory "~/.local/state/emacs/backup" :parent))
 
   (setq auto-save-file-name-transforms
-        '((".*" "~/.local/state/emacs/auto-save/" t))) ;set auto save file directory
+        '((".*" "~/.local/state/emacs/auto-save/" t)))
   (setq backup-directory-alist
-        '(("." . "~/.local/state/emacs/backup/")))     ;set backup directory
+        '(("." . "~/.local/state/emacs/backup/")))
   (setq backup-by-copying t)
-  (setq tab-always-indent 'complete)                   ;tab to complete
-  (setq ring-bell-function 'ignore)                    ;no ring bell
-  (setq use-short-answers t)                           ;y-n instead of yes-no
+  (setq tab-always-indent 'complete)
+  (setq ring-bell-function 'ignore)
+  (setq use-short-answers t)
   (setq initial-scratch-message nil)
-  (setq confirm-kill-processes nil)                    ;stop asking "Active processes..."
-  (setq-default indent-tabs-mode nil)                  ;use space to indent
-  (setq-default tab-width 2)                           ;set tab width to 2
-  (setq-default cursor-type 'bar)                      ;change cursor type
-  (setq url-proxy-services
-        '(("http"  . "127.0.0.1:7890")
-          ("https" . "127.0.0.1:7890")))               ;setup proxy
+  (setq confirm-kill-processes nil)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (setq-default cursor-type 'bar)
+  (setq url-proxy-services '(("http" . "http://127.0.0.1:7890")
+                             ("https" . "http://127.0.0.1:7890")))
+  (setq project-switch-commands '((project-find-file "Find file" "f")
+                                  (project-find-dir "Find dir" "d")
+                                  (project-dired "Dired" "D")
+                                  (consult-ripgrep "ripgrep" "g")
+                                  (magit-project-status "Magit" "m")))
+
   (setq kill-buffer-query-functions
         (remq 'process-kill-buffer-query-function
-              kill-buffer-query-functions))            ;kill buffer with process directly
+              kill-buffer-query-functions))
 
   (set-face-attribute 'default nil :family "Sarasa Term SC Nerd" :height 170)
   (set-face-attribute 'fixed-pitch nil :family "Sarasa Term SC Nerd" :height 170)
@@ -44,18 +49,18 @@
   (setq show-paren-delay 0)
   (show-paren-mode 1)
 
-  (blink-cursor-mode -1)                               ;no blinking cursor
+  (blink-cursor-mode -1)
   (mouse-wheel-mode -1)
-  (pixel-scroll-precision-mode 1)                      ;smooth scroll
-  (repeat-mode 1)                                      ;repeat command
-  (recentf-mode 1)                                     ;record recent files
-  (savehist-mode 1)                                    ;record command hist
-  (save-place-mode 1)                                  ;record last edit palce
+  (pixel-scroll-precision-mode 1)
+  (repeat-mode 1)
+  (recentf-mode 1)
+  (savehist-mode 1)
+  (save-place-mode 1)
   (display-battery-mode 1)
-  (electric-pair-mode 1)                               ;auto pair
-  (global-visual-line-mode 1)                          ;handle line break gracefully
-  (global-subword-mode 1)                              ;handle CamelCase gracefully
-  (global-auto-revert-mode 1)                          ;auto revert buffer
+  (electric-pair-mode 1)
+  (global-visual-line-mode 1)
+  (global-subword-mode 1)
+  (global-auto-revert-mode 1)
   (global-prettify-symbols-mode 1)
   (delete-selection-mode 1)
   (fido-vertical-mode 1)
@@ -67,10 +72,10 @@
       ('dark (load-theme 'ef-dark :no-confirm))))
 
   (when (eq system-type 'darwin)
-    (setq ns-use-native-fullscreen t                   ;mac native fullscreen
-          mac-command-modifier 'meta                   ;command as meta
-          mac-option-modifier 'super                   ;option as super
-          frame-resize-pixelwise t)                    ;real fullsize for window manager
+    (setq ns-use-native-fullscreen t
+          mac-command-modifier 'meta
+          mac-option-modifier 'super
+          frame-resize-pixelwise t)
     (add-hook 'ns-system-appearance-change-functions
               #'ns-system-appearance-changed)
     (add-to-list 'default-frame-alist
