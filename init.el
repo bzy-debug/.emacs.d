@@ -1,9 +1,10 @@
 ;; -*- lexical-binding: t -*-
 
 (require 'package)
-(package-initialize)
+(setq package-check-signature nil)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -29,8 +30,6 @@
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
   (setq-default cursor-type 'bar)
-  (setq url-proxy-services '(("http" . "http://127.0.0.1:7890")
-                             ("https" . "http://127.0.0.1:7890")))
   (setq project-switch-commands '((project-find-file "Find file" "f")
                                   (project-find-dir "Find dir" "d")
                                   (project-dired "Dired" "D")
@@ -101,7 +100,11 @@
   :hook
   ((prog-mode . rainbow-delimiters-mode-enable)))
 
-(use-package magit)
+(use-package magit
+  :init
+  (setq magit-define-global-key-bindings 'recommended))
+
+(use-package git-timemachine)
 
 (use-package paredit
   :hook
@@ -124,6 +127,28 @@
                           (projects . 5)))
   (dashboard-setup-startup-hook))
 
+(defun magit-help-create-worktree ()
+  "Quickly create a worktree from origin/master"
+  (interactive)
+  (let* ((branch-name (read-string "New branch: "))
+         (repo-path (magit-toplevel))
+         (new-dir-name (car (last (split-string branch-name "/"))))
+         (target-path (expand-file-name new-dir-name (file-name-directory (directory-file-name repo-path)))))
+    (magit-worktree-branch target-path branch-name (if (magit-branch-p "origin/main") "origin/main" "origin/master"))))
+
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(git-timemachine yasnippet-snippets which-key vertico tuareg slime rainbow-delimiters proof-general paredit orderless opam-switch-mode multiple-cursors mini-frame marginalia forge fireplace exec-path-from-shell ef-themes dashboard ctrlf company-coq avy)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
