@@ -110,12 +110,21 @@
   :hook
   ((scheme-mode     . paredit-mode)
    (lisp-mode       . paredit-mode)
-   (emacs-lisp-mode . paredit-mode)))
+   (emacs-lisp-mode . paredit-mode)
+   (racket-mode . paredit-mode)
+   (rackt-xp-mode . paredit-mode)))
 
 (use-package which-key
   :init
   (setq which-key-idle-delay 0.3)
   (which-key-mode 1))
+
+(use-package racket-mode
+  :init
+  (require 'racket-xp)
+  (add-hook 'racket-mode-hook #'racket-xp-mode)
+  :bind
+  (("C-c <return>" . racket-run)))
 
 (use-package dashboard
   :init
@@ -127,7 +136,7 @@
                           (projects . 5)))
   (dashboard-setup-startup-hook))
 
-(defun magit-help-create-worktree ()
+(defun my/magit-help-create-worktree ()
   "Quickly create a worktree from origin/master"
   (interactive)
   (let* ((branch-name (read-string "New branch: "))
@@ -135,6 +144,28 @@
          (new-dir-name (car (last (split-string branch-name "/"))))
          (target-path (expand-file-name new-dir-name (file-name-directory (directory-file-name repo-path)))))
     (magit-worktree-branch target-path branch-name (if (magit-branch-p "origin/main") "origin/main" "origin/master"))))
+
+(defun my/magit-remove-other-worktrees ()
+  "Remove all Git worktrees except the current one using Magit.
+Prompts before removing each other worktree."
+  (interactive)
+  (require 'magit)
+  (let* ((current (magit-toplevel))
+         (worktrees (magit-list-worktrees)))
+    (unless current
+      (user-error "Not in a Git repository"))
+    (dolist (wt worktrees)
+      (let ((path (car wt)))
+        (when (and path
+                   (not (string-equal
+                         (file-truename path)
+                         (file-truename current))))
+          (when (yes-or-no-p (format "Remove worktree: %s? " path))
+            (magit-call-git "worktree" "remove" "--force" path)
+            (message "Removed worktree: %s" path))))))
+    (magit-refresh))
+
+
 
 (use-package exec-path-from-shell
   :init
@@ -145,7 +176,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(git-timemachine yasnippet-snippets which-key vertico tuareg slime rainbow-delimiters proof-general paredit orderless opam-switch-mode multiple-cursors mini-frame marginalia forge fireplace exec-path-from-shell ef-themes dashboard ctrlf company-coq avy)))
+   '(typescript-mode git-timemachine yasnippet-snippets which-key vertico tuareg slime rainbow-delimiters proof-general paredit orderless opam-switch-mode multiple-cursors mini-frame marginalia forge fireplace exec-path-from-shell ef-themes dashboard ctrlf company-coq avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
